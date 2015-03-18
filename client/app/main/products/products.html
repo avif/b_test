@@ -1,0 +1,44 @@
+<div class="container clearfix main-wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="sidebar-wrap" ng-include="'components/sidebar/sidebar.html'"></div>
+
+      <div class="content content-products">
+        <ul class="products clearfix">
+          <li class="product" ng-repeat="product in products">
+            <div class="title">{{product.name}}</div>
+            <div class="img-wrap">
+              <img alt="{{product.name}}" ng-src="{{product.img}}"></img>
+            </div>
+            <div class="price">₪{{product.salePrice}}</div>
+            <div class="actions-wrap clearfix">
+              <div class="pill-btn add-to-cart" ng-click="addToCart(product.id)">הוסף לסל</div>
+              <a class="pill-btn details" ui-sref="product({ id: product.id })">פרטים</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="paging-wrap">
+          <nav>
+            <ul class="pagination">
+              <li class="prev" ng-class="{ 'disabled': currentPage===1 }">
+                <a ui-sref="products({ page: currentPage-1 })" aria-label="Previous">
+                  <span aria-hidden="true">&lt;&lt;</span>
+                </a>
+              </li>
+              <li ng-repeat="page in getPagesArr(pages) track by $index"
+                  ng-class="{ 'active': $index+1 === currentPage }">
+                <a ui-sref="products({ page: $index+1 })">[{{$index+1}}]</a>
+              </li>
+              <li class="next" ng-class="{ 'disabled': currentPage===pages }">
+                <a ui-sref="products({ page: currentPage+1 })" aria-label="Next">
+                  <span aria-hidden="true">&gt;&gt;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

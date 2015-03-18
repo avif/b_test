@@ -1,0 +1,155 @@
+<div class="container clearfix main-wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="sidebar-wrap" ng-include="'components/sidebar/sidebar.html'"></div>
+
+      <div class="content content-product">
+        <div class="product-wrap">
+          <div class="product">
+            <div class="top clearfix">
+              <div class="right">
+                <div class="title">{{product.name}}</div>
+                <table class="basic-details">
+                  <tbody>
+                    <tr>
+                      <td>סוג מכירה</td>
+                      <td ng-class="{ 'sale' : product.sale }">{{ saleType(product); }}</td>
+                    </tr>
+                    <tr>
+                      <td>יצרן</td>
+                      <td>{{product.manufactor}}</td>
+                    </tr>
+                    <tr ng-hide="!product.sale">
+                      <td>מחיר רגיל</td>
+                      <td class="line">₪{{product.price}}</td>
+                    </tr>
+                    <tr>
+                      <td>מחיר</td>
+                      <td class="price">₪{{product.salePrice}}</td>
+                    </tr>
+                    <tr ng-hide="!product.sale">
+                      <td>חסכון של</td>
+                      <td>₪{{product.savedAmount}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="left">
+                <div class="box-wrap">
+                  <div class="box">
+                    <img alt="{{product.name}}" ng-src="{{product.img}}"></img>
+                    <div class="like-box-wrap">
+                      <div class="fb-like"
+                           data-href="https://developers.facebook.com/docs/plugins/"
+                           data-layout="button"
+                           data-action="like"
+                           data-show-faces="true"
+                           data-share="false">
+                      </div>
+                    </div>
+                    <div class="zoom">
+                      <div>הגדלה / תמונות נוספות</div>
+                      <i class="glyphicon glyphicon-zoom-in"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="navigate-product">
+                  <a href="next-page" href="#">לדף הבא</a>
+                  <span>|</span>
+                  <a href="prev-page" href="#">לדף הקודם</a>
+                </div>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="actions-wrap clearfix">
+                <div class="gray-btn add-to-cart" ng-click="addToCart(product.id)">הוסף לסל</div>
+                <div class="gray-btn recommend" ng-click="recommend(product.id)">המלץ לחבר</div>
+              </div>
+              <div class="full-spec-wrap">
+                <div class="full-spec">
+                  <i></i>
+                   המפרט המלא
+                </div>
+              </div>
+              <div class="details-wrap">
+                <div class="info">{{product.info}}</div>
+                <div class="advantages-wrap">
+                  <ul class="advantages">
+                    <li class="advantage" ng-repeat="advantage in product.advantages">
+                      {{advantage}}
+                    </li>
+                  </ul>
+                </div>
+                <div class="grams-wrap clearfix">
+                  <table class="grams">
+                    <caption>גרמים ליום</caption>
+                    <thead>
+                      <tr>
+                        <th>חודשים</th>
+                        <th colspan="11" class="wide">&nbsp; משקל גוף</th>
+                        <th class="last"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td>2kg</td>
+                        <td>4kg</td>
+                        <td>6kg</td>
+                        <td>10kg</td>
+                        <td>12kg</td>
+                        <td>14kg</td>
+                        <td>16kg</td>
+                        <td>18kg</td>
+                        <td>20kg</td>
+                        <td>22kg</td>
+                        <td>25kg</td>
+                        <td class="last"></td>
+                      </tr>
+                      <tr ng-repeat="item in product.gramsPerDay">
+                        <td>{{item.months}}</td>
+                        <td>{{item.gramsPerWeight['2kg']}}</td>
+                        <td>{{item.gramsPerWeight['4kg']}}</td>
+                        <td>{{item.gramsPerWeight['6kg']}}</td>
+                        <td>{{item.gramsPerWeight['10kg']}}</td>
+                        <td>{{item.gramsPerWeight['12kg']}}</td>
+                        <td>{{item.gramsPerWeight['14kg']}}</td>
+                        <td>{{item.gramsPerWeight['16kg']}}</td>
+                        <td>{{item.gramsPerWeight['18kg']}}</td>
+                        <td>{{item.gramsPerWeight['20kg']}}</td>
+                        <td>{{item.gramsPerWeight['22kg']}}</td>
+                        <td>{{item.gramsPerWeight['25kg']}}</td>
+                        <td class="last"></td>
+                      </tr>
+                      <tr class="last-row">
+                        <td colspan="12">&nbsp;</td>
+                        <td class="last"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="ingrediants-wrap clearfix">
+                  <div class="ingrediants-title">רכיבים</div>
+                  <div class="ingrediants">
+                    {{ getIngrediantsString(product.ingrediants); }}
+                  </div>
+                </div>
+                <div class="nutrition-wrap clearfix">
+                  <div class="nutrition-title">תכולה תזונתית באחוזים</div>
+                  <table class="nutrition">
+                    <tbody>
+                      <tr ng-repeat="item in product.nutrition">
+                        <td>{{item.name}}</td>
+                        <td>{{item.content | number : 2}}%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

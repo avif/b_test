@@ -1,0 +1,44 @@
+<div class="sidebar" ng-controller="SidebarCtrl">
+  <h1 class="side-menu-header">קטלוג המוצרים שלנו</h1>
+  <ul class="nav nav-sidebar">
+    <li class="side-menu-item" ng-repeat="item in catalog">
+      <a ng-href="{{item.link}}" tooltip="{{item.name}}">
+        <span>{{item.name}}</span>
+        <i></i>
+      </a>
+    </li>
+  </ul>
+
+  <h1 class="side-menu-header">מידע ועזרה</h1>
+  <ul class="nav nav-sidebar">
+    <li class="side-menu-item" ng-repeat="item in info">
+      <a ng-href="{{item.link}}" tooltip="{{item.name}}">
+        <span>{{item.name}}</span>
+        <i></i>
+      </a>
+    </li>
+  </ul>
+
+  <!-- search -->
+  <div class="search-wrap">
+    <form id="search">
+      <input type="text" placeholder="...חפש מוצר" id="search-input">
+      <div class="submit-wrap">
+        <i class="glyphicon glyphicon-search"></i>
+        <input type="submit" value="חפש" id="search-btn">
+      </div>
+    </form>
+  </div>
+
+  <!-- newsletter -->
+  <h1 class="side-menu-header">מועדון לקוחות</h1>
+  <form id="newsletter">
+    <input type="text" placeholder="שם פרטי" id="first-name">
+    <input type="email" placeholder="אימייל" id="email">
+    <input type="submit" value="שלח" id="submit">
+  </form>
+
+  <!-- hot sales -->
+  <h1 class="side-menu-header">מבצעים חמים</h1>
+  <sale-slider></sale-slider>
+</div>

@@ -7,9 +7,7 @@ angular.module('bTestApp', [
   'ui.router',
   'ui.bootstrap'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/');
-
-    $locationProvider.html5Mode(true);
-  });
+.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $urlRouterProvider.otherwise('/products/');
+  $locationProvider.html5Mode(true);
+});

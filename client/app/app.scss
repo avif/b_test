@@ -1,12 +1,13 @@
-$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-$fa-font-path: "/bower_components/font-awesome/fonts";
-
-@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-@import 'font-awesome/scss/font-awesome';
-
 /**
  * App-wide Styles
  */
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import 'compass';
+
+body {
+  margin: 0;
+}
 
 .browsehappy {
     margin: 0.2em 0;
@@ -15,8 +16,50 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+.container {
+  width: 930px !important;
+}
+
+.pill-btn {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 21px;
+  min-width: 40px;
+  padding: 0 10px;
+  background: #1c8bd5;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+.gray-btn {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 18px;
+  min-width: 90px;
+  padding: 0 10px;
+  background: #666666;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  @include box-shadow(0 0 0 1px rgba(255, 255, 255, .15) inset,0 0 6px rgba(255, 255, 255, .2) inset);
+
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'main/main.scss';
-@import 'modal/modal.scss';
 // endinjector

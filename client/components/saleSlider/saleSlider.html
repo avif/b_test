@@ -1,0 +1,15 @@
+<div class="sale-slider-wrap">
+  <ul class="sale-slider">
+    <li class="sale"
+        ng-repeat="sale in sales"
+        ng-class="{ 'current' : currentSale === $index, 'prev' : prevSale === $index }">
+      <div class="img-wrap">
+        <img alt="{{sale.name}}" ng-src="{{sale.img}}"/>
+      </div>
+      <div class="details-wrap">
+        <div class="title">{{sale.name}}</div>
+        <div class="price">₪{{sale.salePrice}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
